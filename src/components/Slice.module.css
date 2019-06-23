@@ -1,0 +1,7 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.wrapper > :last-child {
+    flex: auto;
+}

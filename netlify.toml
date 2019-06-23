@@ -1,0 +1,7 @@
+[build]
+  functions = "functions"
+  command = "yarn build && yarn functions:build"
+  publish = "build"
+
+[context.production]
+  environment = { REACT_APP_DATA_URL = ".netlify/functions/getData" }
