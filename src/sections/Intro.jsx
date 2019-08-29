@@ -4,7 +4,7 @@ import Card from '../components/Card';
 const Intro = () => (
     <Card title="Intro" hideDropdown>
         <p className="font-bold">
-            Help wanted! <a className="text-blue-dark no-underline font-semibold" href="github.com/serverless-benchmark/frontend">GitHub Repository</a>
+            Help wanted! <a className="text-blue-dark no-underline font-semibold" href="https://github.com/serverless-benchmark/frontend">GitHub Repository</a>
         </p>
         <p className="mt-2">
             All workloads are Node.js functions. A note on the definition of concurrency: If concurrency is set 50 the server starts 50 requests at once and as soon as the server got a response the next request will be started. However if the response is faster than the server can fire requests, this might lead to actutal concurrency being lower than 50. This will be examined soon.
