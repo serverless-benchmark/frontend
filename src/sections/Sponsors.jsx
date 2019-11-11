@@ -21,6 +21,7 @@ const Sponsors = () => (
         </div>
         <div className="w-full flex justify-center">
             <SponsorLink link="https://www.routerhosting.com/" name="RouterHosting" />
+            <SponsorLink link="https://evolution-host.com/vps-hosting.php" name="KVM VPS by Evolution Host" />
         </div>
     </div>
 )
