@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import Label from '../components/Label';
 import Metric from '../components/Metric';
 import { LineChart, Line, Tooltip, YAxis, ReferenceLine, ResponsiveContainer } from 'recharts';
@@ -7,6 +7,8 @@ import ProviderName from '../components/ProviderName';
 import Slice from '../components/Slice';
 import { ProviderIdToColor } from '../mappings';
 import Card from '../components/Card';
+import Comparison from '../components/Comparison';
+import Switch from "react-switch";
 
 const Chart = ({ data }) => {
     const values = data.overheadMetrics.percentiles.map((value, idx) => ({ name: `Percentile #${idx}`, value }))
@@ -25,7 +27,13 @@ const Chart = ({ data }) => {
     )
 }
 
-const Provider = ({ data }) => {
+const Coldstart = ({metrics}) => {
+  const concurrency = 10;
+  const [showSingelGraphComaprison, setShowSingelGraphComaprison] = useState(false)
+  const data = metrics['job-coldstart-01'];
+  const getData = resourceId => data.find(x => x.resource.id === resourceId && x.job.concurrency === 10);
+
+  const Provider = ({ data }) => {
     return (
         <Slice>
             <Metric value={Math.round(data.overheadMetrics.percentiles[50]) + 'ms'} label="median" className="mb-2" />
@@ -34,18 +42,32 @@ const Provider = ({ data }) => {
                 <Metric value={Math.round(data.count.coldstart) + '#'} label="actual cold" small className="mb-2" />
                 <Metric value={Math.round(data.count.warm) + '#'} label="warm" small className="mb-2" />
             </div>
-            <Chart data={data} />
+            {!showSingelGraphComaprison &&
+                <Chart data={data} />
+            }
             <ProviderName id={data.resource.provider} />
         </Slice>
     )
-}
-
-const Coldstart = ({metrics}) => {
-  const data = metrics['job-coldstart-01'];
-  const getData = resourceId => data.find(x => x.resource.id === resourceId && x.job.concurrency === 10);
+  }
 
   const RightComponents = () => (<Fragment>
-    <Label name="Concurrency" value={10} color="blue" />
+    <label class="mr-2">Single Graph</label>
+    <Switch
+        checked={showSingelGraphComaprison}
+        onChange={()=> setShowSingelGraphComaprison(!showSingelGraphComaprison) }
+        onColor="#86d3ff"
+        onHandleColor="#2693e6"
+        handleDiameter={30}
+        uncheckedIcon={false}
+        checkedIcon={false}
+        boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+        activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+        height={20}
+        width={48}
+        className="react-switch mr-2"
+        id="material-switch"
+    />
+    <Label name="Concurrency" value={concurrency} color="blue" />
 </Fragment>);
 
   return (
@@ -58,6 +80,9 @@ const Coldstart = ({metrics}) => {
           <Provider data={getData('azurecs')} />
           <Provider data={getData('cf')} />
       </CardSection>
+      {showSingelGraphComaprison &&
+          <Comparison data={data} concurrency={concurrency}/>
+      }
     </Card>
   );
 }
