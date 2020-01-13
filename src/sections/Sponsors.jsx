@@ -1,5 +1,4 @@
 import React from 'react';
-import Introwise from '../logos/introwise.png';
 
 const Sponsor = ({ image, link }) => (
     <div className="w-16 h-16 rounded-lg overflow-hidden">
@@ -16,9 +15,9 @@ const SponsorLink = ({ link, name }) => (
 const Sponsors = () => (
     <div className="w-full">
         <h3 className="text-white mb-4 text-center">Sponsors</h3>
-        <div className="w-full flex justify-center mb-8">
+        {/* <div className="w-full flex justify-center mb-8">
             <Sponsor image={Introwise} link="https://introwise.com" />
-        </div>
+        </div> */}
         <div className="w-full flex justify-center">
             <SponsorLink link="https://www.routerhosting.com/" name="RouterHosting" />
             <SponsorLink link="https://evolution-host.com/vps-hosting.php" name="KVM VPS by Evolution Host" />
