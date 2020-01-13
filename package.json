@@ -6,7 +6,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "netlify-lambda": "^1.4.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
