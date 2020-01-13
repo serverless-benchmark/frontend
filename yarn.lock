@@ -8627,6 +8627,13 @@ react-smooth@~1.0.0:
     raf "^3.4.0"
     react-transition-group "^2.5.0"
 
+react-switch@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-switch/-/react-switch-5.0.1.tgz#449277f4c3aed5286fffd0f50d5cbc2a23330406"
+  integrity sha512-Pa5kvqRfX85QUCK1Jv0rxyeElbC3aNpCP5hV0LoJpU/Y6kydf0t4kRriQ6ZYA4kxWwAYk/cH51T4/sPzV9mCgQ==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-transition-group@^2.5.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.6.0.tgz#3c41cbdd9c044c5f8604d4e8d319e860919c9fae"
