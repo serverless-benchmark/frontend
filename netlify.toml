@@ -1,6 +1,6 @@
 [build]
   functions = "functions"
-  command = "yarn build && yarn functions:build"
+  command = "yarn build"
   publish = "build"
 
 [context.production]
